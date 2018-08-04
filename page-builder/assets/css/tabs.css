@@ -1,0 +1,87 @@
+.mm-group--repeating {
+    border: 0;
+    padding: 0;
+}
+.mm-tabs__body {
+    border: 1px solid #dfdfdf;
+    padding: 40px 25px 13px;
+    position: relative;
+}
+.mm-tabs__header {
+    bottom: -1px;
+    z-index: 15;
+}
+.mm-group--repeating > div > div > .mm-group__title {
+    position: relative;
+    display: inline-block;
+    left: initial;
+    top: initial;
+}
+.mm-tabs__tab {
+    background-color: #dfdfdf;
+    border: 1px solid #dfdfdf;
+    color: #888;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 2px;
+    padding: 4px 10px 3px;
+    position: relative;
+    vertical-align: top;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+.mm-tabs__tab:hover {
+    background-color: #F4966D;
+    border-color: #F4966D;
+    border-bottom-color: #dfdfdf;
+    color: #000;
+}
+.mm-tabs__tab--current {
+    background-color: #fff !important;
+    border-color: #dfdfdf !important;
+    border-bottom-color: #fff !important;
+    cursor: default;
+    color: #000 !important;
+}
+.mm-tabs__tab--error::after {
+    background-color: #e00;
+    border-radius: 20px;
+    content: '';
+    height: 6px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 6px;
+}
+.mm-tabs__content {
+    display: none;
+    position: relative;
+}
+.mm-tabs__content--current {
+    display: block;
+}
+.mm-tabs__remove-tab {
+    color: #f66;
+    cursor: pointer;
+    padding: 5px 8px 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+.mm-tabs__remove-tab:hover {
+    color: #e55;
+}
+.mm-tabs__tab-id {
+    font-weight: bold;
+}
+.mm-tabs__max--1 > div > .mm-tabs__remove-tab {
+    display: none;
+}
+
+.mm-tabs--grid > div > .mm-tabs__tab--new, .mm-tabs--grid > div > .mm-tabs__remove-tab {
+    visibility: collapse;
+}

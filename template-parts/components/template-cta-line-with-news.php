@@ -57,7 +57,7 @@ global $Mammen;
 				?>
 			</div>
 			<div class="under-slide__cta">
-				<div class="under-slide__btn btn btn--big-alpha btn-target btn-target--1"><?php echo nbsp( $Mammen->get_field( ___( 'Title Button' ) ) ); ?></div>
+				<div class="under-slide__btn btn btn--big-alpha btn-target btn-target--1 btn--scroll-btn-on-page"><?php echo nbsp( $Mammen->get_field( ___( 'Title Button' ) ) ); ?></div>
 			</div>
 		</div>
 	</div>

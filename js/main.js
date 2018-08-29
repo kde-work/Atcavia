@@ -53,6 +53,7 @@
             $btn__target = $('.btn-target--'+linked__id);
 
         if ($btn__linked.length && $btn__target.length) {
+            $btn__linked.outerWidth($btn__target.outerWidth());
             $btn__linked.html($btn__target.html());
         }
     });
@@ -94,7 +95,7 @@
             $next_elem = $('.top-menu + *').first();
 
         // Variables of scroll btn
-        var $page_btn = $('.under-slide__btn'), // btn on page
+        var $page_btn = $('.btn--scroll-btn-on-page'), // btn on page
             $scroll_btn = $('.scroll-btn .btn'),
             scroll_btn__hide_px = $scroll_btn.data('top'),
             wpadminbar_height = $('#wpadminbar').outerHeight(),
@@ -102,6 +103,16 @@
 
         var $cont = $('.video-start-on-scroll'),
             cont_h = $cont.outerHeight();
+
+        var $scroll_content = $('.scroll-content').first(),
+            $scrollable_in_cont = $('.scrollable-in-cont', $scroll_content).first();
+
+        if ($scrollable_in_cont.length) {
+            var scroll_content_top = $scroll_content.offset().top,
+                scroll_content_bottom = scroll_content_top + $scroll_content.innerHeight(),
+                scrollable_in_cont_top = $scrollable_in_cont.offset().top,
+                scrollable_in_cont_h = $scrollable_in_cont.outerHeight();
+        }
 
         function atc_scroll_header () {
             var scrollTop = $window.scrollTop();
@@ -146,36 +157,51 @@
             }
 
             // Video Start on scroll
-            var cont_top = $cont.offset().top,
-                $active_tab = $('.service-box__item--active', $cont),
-                $video = $('video', $active_tab),
-                windowHeight = window.innerHeight;
+            if ($cont.length) {
+                var cont_top = $cont.offset().top,
+                    $active_tab = $('.service-box__item--active', $cont),
+                    $video = $('video', $active_tab),
+                    windowHeight = window.innerHeight;
 
-            if ($video.length && !is_mobile()) {
-                if (((scrollTop + windowHeight - cont_h*0.3) > cont_top) && (sc < (cont_top + cont_h - cont_h*0.2))) {
-                    if (!$video.hasClass('video--start')) {
-                        $video.get(0).play();
-                        $video.addClass('video--start');
-                    }
-                } else {
-                    if ($video.hasClass('video--start')) {
-                        $video.get(0).pause();
-                        $video.removeClass('video--start');
+                if ($video.length && !is_mobile()) {
+                    if (((scrollTop + windowHeight - cont_h*0.3) > cont_top) && (sc < (cont_top + cont_h - cont_h*0.2))) {
+                        if (!$video.hasClass('video--start')) {
+                            $video.get(0).play();
+                            $video.addClass('video--start');
+                        }
+                    } else {
+                        if ($video.hasClass('video--start')) {
+                            $video.get(0).pause();
+                            $video.removeClass('video--start');
+                        }
                     }
                 }
             }
 
-            /*// Stop animate on slide
-            var $current_slide = $('.slick-slide--active'),
-                $bg = $('.slide-slick__bg--image', $current_slide);
-
-            if ($bg.length && !$bg.hasClass('stop-animate')) {
-                $bg.css({
-                    'transition': 'none',
-                    'transform': 'scale(1, 1)'
-                });
-                $bg.addClass('stop-animate');
-            }*/
+            if ($scrollable_in_cont.length) {
+                if ((sc > (scrollable_in_cont_top - 4)) && $window.width() > mobile_width) {
+                    if ((sc + scrollable_in_cont_h + 4) >= scroll_content_bottom) {
+                        $scrollable_in_cont.addClass('scrollable-in-cont--bottom');
+                        $scrollable_in_cont.removeClass('scrollable-in-cont--fixed');
+                    } else {
+                        if (!$scrollable_in_cont.hasClass('scrollable-in-cont--fixed')) {
+                            $scrollable_in_cont.css({
+                                'top': const_h + 5 + 'px'
+                            });
+                            $scrollable_in_cont.addClass('scrollable-in-cont--fixed');
+                            $scrollable_in_cont.removeClass('scrollable-in-cont--bottom');
+                        }
+                    }
+                } else {
+                    if ($scrollable_in_cont.hasClass('scrollable-in-cont--fixed')) {
+                        $scrollable_in_cont.removeClass('scrollable-in-cont--fixed');
+                        $scrollable_in_cont.removeClass('scrollable-in-cont--bottom');
+                        $scrollable_in_cont.css({
+                            'top': 'initial'
+                        });
+                    }
+                }
+            }
         }
 
         $window.on('scroll', atc_scroll_header); //Событие скролла вешаем на viewport

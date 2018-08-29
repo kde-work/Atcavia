@@ -1,7 +1,9 @@
 <?php
 
 function atc_is_en() {
-	session_start();
+	if ( !isset( $_SESSION['lang'] ) ) {
+		session_start();
+	}
 
 	if ( empty( $_SESSION['lang'] ) ) {
 		$_SESSION['lang'] = 'ru';

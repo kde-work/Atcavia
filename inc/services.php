@@ -1,35 +1,4 @@
 <?php
-function atc_breadcrumbs( $post_id, $s = ' / ' ) {
-	ob_start();
-    ?>
-    <div class="breadcrumbs">
-        <?php
-        echo atc_breadcrumbs_template( __t( 'Главная страница', 'Main Page' ), 'main', '/' );
-        echo "<div class=\"breadcrumbs__separator\">$s</div>";
-        echo atc_breadcrumbs_template( tob_get_title( $post_id, get_the_title( $post_id ) ), $post_id, get_the_permalink( $post_id ), true );
-        ?>
-    </div>
-    <?php
-	$output = ob_get_contents();
-	ob_end_clean();
-	return $output;
-}
-function atc_breadcrumbs_template( $name, $id, $link = '', $no_link = false ) {
-	ob_start();
-    ?>
-    <div class="breadcrumb breadcrumb--<?php echo $id; ?> <?php echo ( !$link OR $no_link ) ? 'breadcrumb--no-link' : ''; ?>">
-	    <?php
-        echo ( $link ) ? "<a href=\"$link\">" : '';
-        echo $name;
-	    echo ( $link ) ? '</a>' : '';
-	    ?>
-    </div>
-    <?php
-	$output = ob_get_contents();
-	ob_end_clean();
-	return $output;
-}
-
 function tob_under_slide_news() {
 	global $wpdb;
 
@@ -139,48 +108,48 @@ function ru_date($format, $date = false) {
 }
 
 function tbs_auto_paragraph( $text ){
-	if (trim($text) !== '') {
-		$text = preg_replace('|<br[^>]*>\s*<br[^>]*>|i', "\n\n", $text . "\n");
-		$text = preg_replace("/\n\n+/", "\n\n", str_replace(["\r\n", "\r"], "\n", $text));
-		$texts = preg_split('/\n\s*\n/', $text, -1, PREG_SPLIT_NO_EMPTY);
+	if ( trim( $text ) !== '' ) {
+		$text = preg_replace( '|<br[^>]*>\s*<br[^>]*>|i', "\n\n", $text . "\n" );
+		$text = preg_replace( "/\n\n+/", "\n\n", str_replace( ["\r\n", "\r"], "\n", $text ) );
+		$texts = preg_split( '/\n\s*\n/', $text, -1, PREG_SPLIT_NO_EMPTY );
 		$text = '';
-		foreach ($texts as $txt) {
-			$text .= '<p>' . nl2br(trim($txt, "\n")) . "</p>\n";
+		foreach ( $texts as $txt ) {
+			$text .= '<p>' . nl2br( trim( $txt, "\n" ) ) . "</p>\n";
 		}
-		$text = preg_replace('|<p>\s*</p>|', '', $text);
+		$text = preg_replace( '|<p>\s*</p>|', '', $text );
 	}
 
 	return $text;
 }
-function tbs_clear_phone ($phone) {
-	return str_replace(array(' ', '(', ')', '-'), '', str_replace('+7', '8', $phone));
+function tbs_clear_phone ( $phone ) {
+	return str_replace( array( ' ', '(', ')', '-' ), '', str_replace( '+7', '8', $phone ) );
 }
-function tbs_rand_indexes ($min, $max, $count_) {
+function tbs_rand_indexes ( $min, $max, $count_ ) {
 	$count = $count_;
-	$rand_mas = array(mt_rand($min, $max));
+	$rand_mas = array( mt_rand( $min, $max ) );
 	--$count;
-	while ($count > 0) {
-		if (count($rand_mas) > ($max - $min)) {
+	while ( $count > 0 ) {
+		if ( count( $rand_mas ) > ( $max - $min ) ) {
 			break;
 		}
 		$flag = false;
-		$rand = mt_rand($min, $max);
-		foreach ($rand_mas as $rand_ma) {
-			if ($rand_ma === $rand) {
+		$rand = mt_rand( $min, $max );
+		foreach ( $rand_mas as $rand_ma ) {
+			if ( $rand_ma === $rand ) {
 				$flag = true;
 				break;
 			}
 		}
-		if (!$flag) {
+		if ( !$flag ) {
 			$rand_mas[] = $rand;
 			--$count;
 		}
 	}
 	return $rand_mas;
 }
-function tbs_list_of_cat ($term_name) {
+function tbs_list_of_cat ( $term_name ) {
 	global $wpdb;
-	$term_name = addslashes($term_name);
+	$term_name = addslashes( $term_name );
 
 	return $wpdb->get_results(
 		"SELECT * FROM `$wpdb->term_taxonomy` as term_taxonomy INNER JOIN
@@ -194,7 +163,7 @@ function tbs_list_of_cat ($term_name) {
 		ARRAY_A
 	);
 }
-function tbs_list_post_by_post_type ($post_type, $cat_id) {
+function tbs_list_post_by_post_type ( $post_type, $cat_id ) {
 	global $wpdb;
 
 	return $wpdb->get_results(
@@ -205,6 +174,34 @@ function tbs_list_post_by_post_type ($post_type, $cat_id) {
 			    posts.`post_type` = '$post_type'
 		        AND posts.`post_status` = 'publish'
 		           AND term_relationships.`term_taxonomy_id` = '$cat_id'
+		     ORDER BY posts.`post_date` DESC
+	        ",
+		ARRAY_A
+	);
+}
+function tbs_list_post_by_id_list ( $id_list ) {
+	global $wpdb;
+
+	$ids = explode( ',', $id_list );
+	$str = '';
+	foreach ( $ids as $id ) {
+        if ( intval( $id ) ) {
+	        if ( !$str ) {
+		        $str = 'AND (';
+	        } else {
+		        $str .= 'OR ';
+	        }
+	        $str .= "posts.`ID` = '". intval( $id ) ."'";
+        }
+    }
+	if ( $str ) {
+		$str .= ')';
+	}
+	return $wpdb->get_results(
+		"SELECT * FROM `$wpdb->posts` as posts
+			 WHERE 
+			    posts.`post_status` = 'publish'
+		           $str
 		     ORDER BY posts.`post_date` DESC
 	        ",
 		ARRAY_A

@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 </head>
 <?php
-$classes = array(__t( 'ru', 'en' ));
+$classes = array( __t( 'ru', 'en' ) );
 ?>
 <body <?php body_class($classes); ?>>
 
@@ -18,7 +18,7 @@ $classes = array(__t( 'ru', 'en' ));
     <div class="layout__box">
         <div class="header__left">
             <div class="header__hamburger hamburger hamburger--menu mobile" data-id="open"></div>
-            <div class="header__logo"></div>
+            <a href="<?php echo get_home_url(); ?>" class="header__logo" style="background-image: url(<?php echo wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'large', true )[0]; ?>)"></a>
         </div>
         <div class="header__right">
             <div class="header__menu"><?php wp_nav_menu(

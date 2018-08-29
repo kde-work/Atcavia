@@ -3,6 +3,8 @@ Theme Name: Foghorn
 Description: Used to style the TinyMCE editor.
 */
 
+/*@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=cyrillic-ext');*/
+
 *, body {
 	color: #333;
 	font: 15px Georgia, serif;
@@ -235,4 +237,50 @@ p img,
 	position: absolute;
 	left: 10px;
 	top: 7px;
+}
+.regular-text {
+    color: #00093b;
+    font-family: "Museo Sans", serif;
+    font-size: 16px;
+    line-height: 28px;
+}
+.big-text-thin {
+    color: #00093b;
+    font-family: "Museo Sans", serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 30px;
+}
+.big-text-bold {
+    color: #00093b;
+    font-family: "Museo Sans", serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+}
+.big-text-bolder, .title-small {
+    color: #00093b;
+    font-family: "Museo Sans", serif;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 37px;
+}
+.title-small, .title-small p {
+    color: #00093b;
+    font-family: "Museo Sans", serif;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 37px;
+    margin: 12px 0 12px;
+}
+.very-big {
+    color: #00093b;
+    font-family: "Museo Sans", serif;
+    font-size: 26px;
+    font-weight: 900;
+}
+.clear {
+    clear: both;
+    display: block;
+    float: none;
 }

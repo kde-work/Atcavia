@@ -48,7 +48,7 @@ global $Mammen;
 					</div>
 					<div class="slide-slick__bg slide-slick__bg--black" style="<?php $bo = $slide->get_field( 'Black Overlay in percent' ); $bo = ( $bo ) ? $bo : 20; echo ( $bo !== '' ) ? 'background:rgba(0,0,0,' . ( $bo / 100 ) . ');'  : ''; ?>"></div>
 					<div class="slide-slick__bg slide-slick__bg--image"
-					     style="background-image: url('<?php echo $slide->get_img( 'Image', 'large' )[0]['src']; ?>');"></div>
+					     style="background-image: url('<?php echo $slide->get_img( 'Image', 'large-2000' )[0]['src']; ?>');"></div>
 				</div>
 				<?php
 				++ $j;

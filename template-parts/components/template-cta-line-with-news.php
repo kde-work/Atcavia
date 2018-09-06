@@ -57,7 +57,7 @@ global $Mammen;
 				?>
 			</div>
 			<div class="under-slide__cta">
-				<div class="under-slide__btn btn btn--big-alpha btn-target btn-target--1 btn--scroll-btn-on-page"><?php echo nbsp( $Mammen->get_field( ___( 'Title Button' ) ) ); ?></div>
+				<div class="under-slide__btn btn btn--big-alpha btn-target btn-target--1 btn--scroll-btn-on-page" onclick="popup_c({'cat':'connect-with-us', 'title':'<?php echo nbsp( __t( 'Связаться с нами', 'Connect with Us' )); ?>', 'service': 1, 'description': '<?php echo nbsp( __t( 'Связаться с нами (Главная. Под слайдером)', 'Connect with Us (Main. Under Slider)' )); ?>'}, this);"><?php echo nbsp( $Mammen->get_field( ___( 'Title Button' ) ) ); ?></div>
 			</div>
 		</div>
 	</div>

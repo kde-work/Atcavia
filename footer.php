@@ -12,7 +12,7 @@
     <div class="layout__box">
         <div class="footer-top">
             <div class="footer-top__left">
-                <div class="footer-top__logo"></div>
+                <div class="footer-top__logo header__logo" style="background-image: url(<?php echo wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'large', true )[0]; ?>)"></div>
             </div>
             <div class="footer-top__right">
                 <div class="footer-top__text-block">
@@ -38,85 +38,79 @@
 			            'menu' => 'Footer Right'
 		            )
 	            ); ?></div>
-            <div class="footer-bottom__right"><div class="btn btn--big btn--alpha-dark">Связаться&nbsp;с&nbsp;нами</div></div>
+            <div class="footer-bottom__right"><div class="btn btn--big btn--alpha-dark" onclick="popup_c({'cat':'connect-with-us', 'title':'<?php echo nbsp( __t( 'Связаться с нами', 'Connect with Us' )); ?>', 'service': 1, 'description': '<?php echo nbsp( __t( 'Связаться с нами (подвал)', 'Connect with Us (footer)' )); ?>'}, this);">Связаться&nbsp;с&nbsp;нами</div></div>
         </div>
     </div>
 </div>
 
-<div id="modal_form" class="cta">
-    <div class="cta__block">
-        <form action="#" class="services__popup__form cta__form">
-            <h3>Заказать услугу</h3>
-            <div class="service__inputs">
-                <input type="text" name="cta__last-name" placeholder="Фамилия">
-                <input type="text" name="cta__name" required placeholder="Имя">
-                <input type="email" name="cta__email" placeholder="Email">
-                <input type="text" name="cta__phone" required placeholder="Номер телефона">
-            </div>
-            <div class="services__form__time cta__time">
-                <div class="services__time__line"></div>
-                <div class="services__time__circle cta__min">
-                    <input type="radio" name="cta__min" class="cta__time-input" id="cta__min--1" value="60 мин" checked>
-                    <label for="cta__min--1" class="cta__time-label"><span>60&nbsp;мин</span></label>
-                </div>
-                <div class="services__time__circle cta__time">
-                    <input type="radio" name="cta__min" class="cta__time-input" id="cta__min--2" value="90 мин">
-                    <label for="cta__min--2" class="cta__time-label"><span>90&nbsp;мин</span></label>
-                </div>
-                <div class="services__time__circle cta__time">
-                    <input type="radio" name="cta__min" class="cta__time-input" id="cta__min--3" value="120 мин">
-                    <label for="cta__min--3" class="cta__time-label"><span>120&nbsp;мин</span></label>
-                </div>
-            </div>
-            <div class="services__form__gender cta__gender">
-                <div class="services__gender__circle">
-                    <input type="radio" name="cta__gender" class="cta__gender-input" id="cta__gender--1" value="Муж" checked>
-                    <label for="cta__gender--1" class="cta__gender-label"><span>Муж</span></label>
-                </div>
-                <div class="services__gender__circle">
-                    <input type="radio" name="cta__gender" class="cta__gender-input" id="cta__gender--2" value="Жен" checked>
-                    <label for="cta__gender--2" class="cta__gender-label"><span>Жен</span></label>
-                </div>
-            </div>
-            <div class="wrap">
-                <button type="submit" class="btn">Отправить</button>
-            </div>
-
-            <div class="cta__status cta__status--loading">
-                <div class="cta__status-body">
-                    <span class="cta__status-title">Идет отправка...</span>
-                    <div class="spinner">
-                        <div class="rect1"></div>
-                        <div class="rect2"></div>
-                        <div class="rect3"></div>
-                        <div class="rect4"></div>
-                        <div class="rect5"></div>
+    <div class="services__popup cta">
+        <div class="cta__block">
+            <form action="#" class="cta__form">
+                <h3><?php echo __t( 'Связь с нами', 'Connect With Us' ); ?></h3>
+                <div class="cta__cont">
+                    <div class="cta__inputs">
+                        <input type="text" name="cta__name" class="input--deep-blue" autocomplete="off" required placeholder="* <?php echo __t( 'Имя', 'Name' ); ?>">
+                        <input type="text" name="cta__phone" class="input--deep-blue" autocomplete="off" required placeholder="* <?php echo __t( 'Номер телефона', 'Phone' ); ?>">
+                        <input type="email" name="cta__email" class="input--deep-blue" autocomplete="off" required placeholder="* Email">
+                    </div>
+                    <div class="cta__service beauty-list">
+                        <div class="beauty-list__head">
+                            <div class="beauty-list__visible-title"><?php echo __t( 'Тип услуги', 'Type of service' ); ?></div>
+                            <div class="beauty-list__ico"></div>
+                        </div>
+                        <div class="beauty-list__body">
+                            <div class="beauty-list__item beauty-list__item--active" data-i="0" data-type="service">Авиаперевозки</div>
+                            <div class="beauty-list__item" data-i="1" data-type="service">Морские перевозки</div>
+                            <div class="beauty-list__item" data-i="1" data-type="service">Наземные перевозки</div>
+                            <div class="beauty-list__item" data-i="1" data-type="service">Складские услуги</div>
+                            <div class="beauty-list__item" data-i="1" data-type="service">IT-решения в логистике</div>
+                            <div class="beauty-list__item" data-i="1" data-type="service">Продажа авиабилетов</div>
+                            <div class="beauty-list__item" data-i="1" data-type="service">Туристические услуги</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="cta__status cta__status--success">
-                <div class="cta__status-body">
-                    <span class="cta__status-title"><h4>Заявка отправлена!</h4><br>В ближайшее время Вам позвонят</span>
+                <label for="cta__message"><?php echo __t( 'Сообщение', 'Message' ); ?></label>
+                <textarea name="message" class="cta__message input--deep-blue" autocomplete="off" id="cta__message" rows="4" title="<?php echo __t( 'Сообщение', 'Message' ); ?>"></textarea>
+
+                <div class="wrap cta__center">
+                    <button type="submit" class="btn btn--light-blue btn--medium">Отправить</button>
                 </div>
-            </div>
 
-            <div class="cta__status cta__status--error">
-                <div class="cta__status-body">
-                    <span class="cta__status-title"><h4>Произошла ошибка!</h4><br>Заявка не отправлена</span>
+                <div class="cta__status cta__status--loading">
+                    <div class="cta__status-body">
+                        <span class="cta__status-title">Идет отправка...</span>
+                        <div class="spinner">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <input type="hidden" name="url" value="<?php echo get_the_permalink(); ?>">
-            <input type="hidden" name="description" value="default">
-            <input type="hidden" name="type" value="default">
-            <input type="hidden" name="cat" value="0">
-            <input type="hidden" name="action" value="tbs_form">
-        </form>
-        <div class="cta__plus cta__plus--top"></div>
-        <div class="cta__plus cta__plus--bottom"></div>
+                <div class="cta__status cta__status--success">
+                    <div class="cta__status-body">
+                        <span class="cta__status-title"><h4>Заявка отправлена!</h4><br>В ближайшее время Вам позвонят</span>
+                    </div>
+                </div>
+
+                <div class="cta__status cta__status--error">
+                    <div class="cta__status-body">
+                        <span class="cta__status-title"><h4>Произошла ошибка!</h4><br>Заявка не отправлена</span>
+                    </div>
+                </div>
+
+                <input type="hidden" name="url" value="<?php echo get_the_permalink(); ?>">
+                <input type="hidden" name="description" value="default">
+                <input type="hidden" name="service" value="default">
+                <input type="hidden" name="type" value="default">
+                <input type="hidden" name="cat" value="0">
+                <input type="hidden" name="action" value="tbs_form">
+            </form>
+        </div>
     </div>
-</div>
 
 <?php wp_footer(); ?>
 

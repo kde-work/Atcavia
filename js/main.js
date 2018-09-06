@@ -105,13 +105,28 @@
             cont_h = $cont.outerHeight();
 
         var $scroll_content = $('.scroll-content').first(),
-            $scrollable_in_cont = $('.scrollable-in-cont', $scroll_content).first();
+            $scrollable_in_cont = $('.scrollable-in-cont', $scroll_content).first(),
+            $sister_of_scroll_content = $('.sister-of-scroll-content').first();
 
         if ($scrollable_in_cont.length) {
             var scroll_content_top = $scroll_content.offset().top,
                 scroll_content_bottom = scroll_content_top + $scroll_content.innerHeight(),
                 scrollable_in_cont_top = $scrollable_in_cont.offset().top,
-                scrollable_in_cont_h = $scrollable_in_cont.outerHeight();
+                scrollableHeight = 0,
+                sisterHeight = 0,
+                no_scrollable = 0;
+
+            $scroll_content.children().each(function(){
+                scrollableHeight = scrollableHeight + $(this).outerHeight(true);
+            });
+            $sister_of_scroll_content.children().each(function(){
+                sisterHeight = sisterHeight + $(this).outerHeight(true);
+            });
+            if (scrollableHeight > sisterHeight) {
+                no_scrollable = 1;
+            }
+
+            window.scrollable_in_cont_h = $scrollable_in_cont.outerHeight();
         }
 
         function atc_scroll_header () {
@@ -178,27 +193,30 @@
                 }
             }
 
+            // Scroll ATC Form
             if ($scrollable_in_cont.length) {
-                if ((sc > (scrollable_in_cont_top - 4)) && $window.width() > mobile_width) {
-                    if ((sc + scrollable_in_cont_h + 4) >= scroll_content_bottom) {
-                        $scrollable_in_cont.addClass('scrollable-in-cont--bottom');
-                        $scrollable_in_cont.removeClass('scrollable-in-cont--fixed');
-                    } else {
-                        if (!$scrollable_in_cont.hasClass('scrollable-in-cont--fixed')) {
-                            $scrollable_in_cont.css({
-                                'top': const_h + 5 + 'px'
-                            });
-                            $scrollable_in_cont.addClass('scrollable-in-cont--fixed');
-                            $scrollable_in_cont.removeClass('scrollable-in-cont--bottom');
+                if (!no_scrollable) {
+                    if ((sc > (scrollable_in_cont_top - 4)) && $window.width() > mobile_width) {
+                        if ((sc + window.scrollable_in_cont_h + 4) >= scroll_content_bottom) {
+                            $scrollable_in_cont.addClass('scrollable-in-cont--bottom');
+                            $scrollable_in_cont.removeClass('scrollable-in-cont--fixed');
+                        } else {
+                            if (!$scrollable_in_cont.hasClass('scrollable-in-cont--fixed')) {
+                                $scrollable_in_cont.css({
+                                    'top': const_h + 5 + 'px'
+                                });
+                                $scrollable_in_cont.addClass('scrollable-in-cont--fixed');
+                                $scrollable_in_cont.removeClass('scrollable-in-cont--bottom');
+                            }
                         }
-                    }
-                } else {
-                    if ($scrollable_in_cont.hasClass('scrollable-in-cont--fixed')) {
-                        $scrollable_in_cont.removeClass('scrollable-in-cont--fixed');
-                        $scrollable_in_cont.removeClass('scrollable-in-cont--bottom');
-                        $scrollable_in_cont.css({
-                            'top': 'initial'
-                        });
+                    } else {
+                        if ($scrollable_in_cont.hasClass('scrollable-in-cont--fixed')) {
+                            $scrollable_in_cont.removeClass('scrollable-in-cont--fixed');
+                            $scrollable_in_cont.removeClass('scrollable-in-cont--bottom');
+                            $scrollable_in_cont.css({
+                                'top': 'initial'
+                            });
+                        }
                     }
                 }
             }
@@ -208,9 +226,18 @@
         atc_scroll_header(); //Если страница при загрузке уже с прокруткой
     });
 
+    function atc_scrollable_in_cont_refresh() {
+        var $scroll_content = $('.scroll-content').first(),
+            $scrollable_in_cont = $('.scrollable-in-cont', $scroll_content).first();
+
+        window.scrollable_in_cont_h = $scrollable_in_cont.outerHeight();
+    }
+    window.atc_scrollable_in_cont_refresh = atc_scrollable_in_cont_refresh;
+
     // Width of right part of Service Tab
     $(function () {
         atc_right_part_service_width();
+        setTimeout(atc_right_part_service_width, 2000);
     });
     $(window).on('resize', function () {
         atc_right_part_service_width();
@@ -219,11 +246,19 @@
         var body_width = $('body').width(),
             services__box_width = $('.services__box').first().width(),
             $services__right = $('.services__right'),
-            $service_box__bg = $('.service-box__bg');
+            $service_box__bg = $('.service-box__bg'),
+            $video = $('video', $service_box__bg);
 
         if ($service_box__bg.length) {
             if ((body_width - 200) > services__box_width) {
                 $service_box__bg.width((body_width - services__box_width) / 4 + $services__right.width());
+
+                if (true || $video.width() < $service_box__bg.width()) {
+                    $video.css({
+                        'width' : $service_box__bg.width() + 'px',
+                        'height' : 'auto'
+                    });
+                }
             } else {
                 $service_box__bg.css('width', '100%');
             }
@@ -277,36 +312,6 @@
                 "pauseOnHover": 0,
                 "autoplaySpeed": 6500,
                 "dots": false
-                /*"responsive": [
-                    {
-                        "breakpoint": 1150,
-                        "settings": {
-                            "slidesToShow": 4,
-                            "slidesToScroll": 3
-                        }
-                    },
-                    {
-                        "breakpoint": 880,
-                        "settings": {
-                            "slidesToShow": 3,
-                            "slidesToScroll": 2
-                        }
-                    },
-                    {
-                        "breakpoint": 660,
-                        "settings": {
-                            "slidesToShow": 2,
-                            "slidesToScroll": 1
-                        }
-                    },
-                    {
-                        "breakpoint": 440,
-                        "settings": {
-                            "slidesToShow": 1,
-                            "slidesToScroll": 1
-                        }
-                    }
-                ]*/
             });
             $slider.on('afterChange', function(){atc_slick_animate($(this))});
 

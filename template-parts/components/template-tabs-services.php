@@ -69,7 +69,7 @@ global $Mammen;
 								?>
 								<div class="service-box__bg service-box__bg--video">
                                     <div class="service-box__bg service-box__bg--img" style="background-image: url('<?php echo $tab->get_img( 'Image for Mobile', 'large' )[0]['src']; ?>');"></div>
-									<video height="100%" loop>
+									<video height="110%" loop>
 										<source src="<?php echo $video; ?>"
 										        type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
 									</video>

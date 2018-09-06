@@ -30,7 +30,7 @@ $classes = array( __t( 'ru', 'en' ) );
                 ); ?></div><div class="header__track track">
                 <a class="header__track-link mobile" href="<?php echo get_the_permalink( 211 ); ?>"><?php echo __t( 'Трекинг AWB', 'AWB Tracking' ); ?></a>
                 <form action="" class="header__track-form desktop">
-                    <label for="header__track" class="track__label"><?php echo __t( 'Трекинг AWB:', 'AWB Tracking:' ); ?></label><input id="header__track" type="text" class="track__input input--track" placeholder="000-00000000" autocomplete="off"><input type="submit" class="track__submit" value="">
+                    <label for="header__track" class="track__label"><?php echo __t( 'Трекинг AWB:', 'AWB Tracking:' ); ?></label><input id="header__track" type="text" class="track__input input--deep-blue input--track" placeholder="000-00000000" autocomplete="off"><input type="submit" class="track__submit" value="">
                 </form>
             </div><div class="header__language language">
                 <div class="language__item language__item--en <?php echo ( atc_is_en() )? 'language__item--active' : ''; ?>" data-id="en">
@@ -58,7 +58,7 @@ $classes = array( __t( 'ru', 'en' ) );
             <div class="top-search__ico"></div>
         </div>
         <div class="top-menu__btn scroll-btn">
-            <div class="btn btn--light-blue btn--medium btn--linked" data-linked="1" data-top="67"><?php
+            <div class="btn btn--light-blue btn--medium btn--linked" data-linked="1" data-top="67" onclick="popup_c({'cat':'connect-with-us', 'title':'<?php echo nbsp( __t( 'Связаться с нами', 'Connect with Us' )); ?>', 'service': 1, 'description': '<?php echo nbsp( __t( 'Связаться с нами (Шапка сайта)', 'Connect with Us (Header)' )); ?>'}, this);"><?php
 	            echo __t( 'Связаться&nbsp;с&nbsp;нами', 'Contact&nbsp;With&nbsp;Us' );
 	            ?></div>
         </div>

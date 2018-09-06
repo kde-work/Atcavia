@@ -13,6 +13,8 @@ require get_template_directory() . '/page-builder/page-builder.php';
 // session init
 atc_is_en();
 
+add_image_size( 'large-2000', 2000, 800 );
+
 // Переменная для ajax и js/css файлы
 function ajaxurl_scripts () {
     wp_localize_script( 'jquery', 'ajaxurl',
@@ -20,7 +22,7 @@ function ajaxurl_scripts () {
                            'url' => admin_url('admin-ajax.php')
                        ));
 
-	$v = '0.007';
+	$v = '0.009';
 
     wp_enqueue_script( "jquery" );
 

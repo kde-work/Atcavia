@@ -273,6 +273,9 @@ p img,
     line-height: 37px;
     margin: 12px 0 12px;
 }
+.text-uppercase {
+	text-transform: uppercase;
+}
 .very-big {
     color: #00093b;
     font-family: "Museo Sans", serif;

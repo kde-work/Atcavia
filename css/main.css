@@ -56,6 +56,9 @@ a:hover {
 .btn--light-blue:hover {
     background-color: #284594;
 }
+.btn--light-blue:disabled, .btn--light-blue:disabled:hover {
+    background-color: #ccc;
+}
 .btn--big-alpha {
     background-color: transparent;
     border: 2px solid #334ba3;
@@ -1143,9 +1146,13 @@ a:hover {
 .solution-box__title span {
     display: flex;
     margin: auto;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.2);
 }
 .solution-box__btn {
     margin: 0 auto 60px;
+}
+.solution-box__btn .btn:hover {
+    border-color: #fff;
 }
 .solutions-box__title {
     display: block;
@@ -1281,6 +1288,9 @@ a img.aligncenter {
     font-size: 26px;
     font-weight: 900;
 }
+.text-uppercase {
+    text-transform: uppercase;
+}
 .clear {
     clear: both;
     display: block;
@@ -1323,6 +1333,9 @@ a img.aligncenter {
     position: absolute;
     top: 8px;
     width: 13px;
+}
+p + .solutions {
+    margin-top: 3em;
 }
 /** Sub page END **/
 

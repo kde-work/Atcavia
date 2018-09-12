@@ -51,6 +51,12 @@ function atc_mce_before_init_insert_formats( $init_array ) {
 			'block' => 'span',
 			'classes' => 'clear',
 			'wrapper' => true,
+		),
+		array(
+			'title' => 'Uppercase',
+			'block' => 'span',
+			'classes' => 'text-uppercase',
+			'wrapper' => true,
 		)
 	);
 	// Вставляем массив, JSON ENCODED, в 'style_formats'

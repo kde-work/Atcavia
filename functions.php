@@ -5,7 +5,7 @@ require 'inc/services.php';
 require 'inc/breadcrumbs.php';
 require 'inc/tinymce-extend.php';
 require 'template-parts/shortcodes/include-shortcode-files.php';
-//require 'inc/form.php';
+require 'inc/form.php';
 
 // Initial Mammen Page Builder Setup
 require get_template_directory() . '/page-builder/page-builder.php';
@@ -22,7 +22,7 @@ function ajaxurl_scripts () {
                            'url' => admin_url('admin-ajax.php')
                        ));
 
-	$v = '0.009';
+	$v = '0.010';
 
     wp_enqueue_script( "jquery" );
 

@@ -1302,6 +1302,9 @@ a img.aligncenter {
 .sub-content__cont {
     width: calc(100% - 300px);
 }
+.single-content--wide .sub-content__cont {
+    width: 100%;
+}
 .sub-content__cont p:first-child {
     margin-top: 0;
 }

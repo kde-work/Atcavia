@@ -149,25 +149,27 @@
             }
 
             // Variables of scroll btn
-            var sc = scrollTop + const_h,
-                page_btn__top = $page_btn.offset().top;
-            
-            if ((sc > (page_btn__top + 2)) && $window.width() > mobile_width) {
-                var s = scroll_btn__hide_px - (scrollTop + const_h - page_btn__top - 2);
+            if ($page_btn.length) {
+                var sc = scrollTop + const_h,
+                    page_btn__top = $page_btn.offset().top;
 
-                if (s < 0) s = 0;
-                if (s >= 0) {
-                    $scroll_btn.css({
-                        'top': s + 'px'
-                    });
-                }
-                $scroll_btn.removeClass('btn--scroll-hide');
-            } else {
-                if (!$scroll_btn.hasClass('btn--scroll-hide')) {
-                    $scroll_btn.css({
-                        'top': scroll_btn__hide_px + 'px'
-                    });
-                    $scroll_btn.addClass('btn--scroll-hide');
+                if ((sc > (page_btn__top + 2)) && $window.width() > mobile_width) {
+                    var s = scroll_btn__hide_px - (scrollTop + const_h - page_btn__top - 2);
+
+                    if (s < 0) s = 0;
+                    if (s >= 0) {
+                        $scroll_btn.css({
+                            'top': s + 'px'
+                        });
+                    }
+                    $scroll_btn.removeClass('btn--scroll-hide');
+                } else {
+                    if (!$scroll_btn.hasClass('btn--scroll-hide')) {
+                        $scroll_btn.css({
+                            'top': scroll_btn__hide_px + 'px'
+                        });
+                        $scroll_btn.addClass('btn--scroll-hide');
+                    }
                 }
             }
 

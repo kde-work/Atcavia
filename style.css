@@ -13,3 +13,46 @@ Tags: gray, two-columns, one-column, right-sidebar, left-sidebar, flexible-width
 /**
  *  Основные стили находятся в css/main.css!
 **/
+.logo-block {
+    display: flex;
+    flex-wrap: wrap;
+}
+.icon-logo {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 80px;
+    padding: 32px 10px 20px 10px;
+    width: 164px;
+    border: 1px solid #eee;
+    background: #fbfbfb;
+    margin-left: -1px;
+    margin-bottom: -1px;
+    transition: 0.4s background;
+    justify-content: center;
+}
+.icon-logo:hover {
+    background: #f1f1f1;
+}
+.icon-logo a {
+    text-decoration: none;
+    color: #00093b;
+    display: inline-block;
+    margin-bottom: 11px;
+    outline: none;
+}
+.icon-logo a:hover {
+    color: #183ca1;
+}
+.icon-logo img{
+    width: 140px;
+}
+.icon-logo img.alignnone {
+    margin: 0;
+}
+.brand-name {
+    text-align: center;
+}
+.logo-block {
+    margin-bottom: 47px;
+}

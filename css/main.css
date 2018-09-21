@@ -188,6 +188,10 @@ a:hover {
     color: #232b47;
     margin-top: 10px;
 }
+.top-menu__menu .header__track-link {
+    color: #232b47 !important;
+    margin: 0 0 0 10px;
+}
 .header__track-form {
     display: flex;
     align-items: center;
@@ -810,8 +814,11 @@ a:hover {
 /** Services END **/
 
 /** Text news BEGIN **/
-.text-news {
+.layout + .text-news {
     padding-top: 80px;
+}
+.text-news {
+    padding-top: 40px;
 }
 .text-news__grid {
     display: flex;

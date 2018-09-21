@@ -30,7 +30,7 @@
 					<?php edit_post_link( 'Edit' ); ?>
                 </div>
                 <div class="sub-content__sidebar sidebar scroll-content">
-                    <div class="sub-content__btn btn btn--big-alpha btn-target btn--shadow btn-target--1 btn--scroll-btn-on-page" onclick="popup_c({'cat':'connect-with-us', 'title':'<?php echo nbsp( __t( 'Связаться с нами', 'Connect with Us' )); ?>', 'service': 1, 'description': '<?php echo nbsp( __t( 'Связаться с нами (Рукав побочной страницы)', 'Connect with Us (Sidebar on sub-page)' )); ?>'}, this);"><?php echo nbsp( __t( 'Связаться с нами', 'Connect with Us' )); ?></div>
+                    <div class="sub-content__btn btn btn--big-alpha btn-target btn--shadow btn-target--1 btn--scroll-btn-on-page" onclick="popup_c({'cat':'connect-with-us', 'title':'<?php echo nbsp( __t( 'Связаться с нами', 'Get in touch' )); ?>', 'service': 1, 'description': '<?php echo nbsp( __t( 'Связаться с нами (Рукав побочной страницы)', 'Connect with Us (Sidebar on sub-page)' )); ?>'}, this);"><?php echo nbsp( __t( 'Связаться с нами', 'Get&nbsp;in&nbsp;touch' )); ?></div>
 					<?php
 					if ( function_exists( 'get_field' ) AND get_field( 'our_specialists_block', get_the_ID() ) ) {
 						?>

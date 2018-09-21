@@ -1,38 +1,36 @@
+<?php get_header(); ?>
 <?php
-/**
- * The template for displaying Category Archive pages.
- *
- * @package WordPress
- * @subpackage Foghorn
- * @since Foghorn 0.1
- */
-
-get_header(); ?>
-
-		<section id="primary">
-			<div id="content" role="main">
-
-				<header class="page-header">
-					<h1 class="page-title"><?php
-						printf( '<span>' . single_cat_title( '', false ) . '</span>' );
-					?></h1>
-
-					<?php $categorydesc = category_description(); if ( ! empty( $categorydesc ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' ); ?>
-				</header>
-
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
-
-					<?php get_template_part( 'content', 'index' ); ?>
-
-				<?php endwhile; ?>
-
-				<?php foghorn_content_nav( 'nav-below' ); ?> 
-
-			</div><!-- #content -->
-		</section><!-- #primary -->
-
-<?php if ( of_get_option('layout','layout-2cr') != 'layout-1c') {
-	
-} ?>
+$categories = get_the_category();
+$category_id = $categories[0]->cat_ID;
+?>
+    <div class="layout single-title">
+        <div class="layout__box">
+            <h1><?php echo __t( 'Категория: ', 'Category: ' ); ?><?php echo __cat_name( $category_id, single_cat_title( '', false ) ); ?></h1>
+        </div>
+    </div>
+    <div class="layout single-content single-content--wide">
+        <div class="layout__box">
+            <div class="sub-content">
+                <div class="sub-content__cont">
+                    <div class="text-news__grid">
+                        <?php while ( have_posts() ) : the_post(); ?>
+                            <div class="text-news__item text-news__item--<?php echo get_the_ID(); ?>">
+                                <div class="text-news__categories"><?php echo tob_get_cat_list( get_the_ID() ); ?></div>
+                                <div class="text-news__title"><a href="<?php echo get_the_permalink(); ?>"><?php echo tob_get_title( get_the_ID(), get_the_title() ); ?></a></div>
+                                <div class="text-news__date f--grey"><?php echo tob_get_date( get_the_date() ); ?></div>
+                                <a href="<?php echo get_the_permalink(); ?>" class="text-news__more"><?php
+                                    echo __t( 'Подробнее', 'Learn More' );
+                                    ?></a>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout page-numbers">
+        <div class="layout__box">
+	        <?php if( function_exists( 'wp_page_numbers' ) ) : wp_page_numbers(); endif; ?>
+        </div>
+    </div>
 <?php get_footer(); ?>

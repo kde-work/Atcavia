@@ -6,6 +6,7 @@ require 'inc/breadcrumbs.php';
 require 'inc/tinymce-extend.php';
 require 'template-parts/shortcodes/include-shortcode-files.php';
 require 'inc/form.php';
+require 'inc/ajax-pagination.php';
 
 // Initial Mammen Page Builder Setup
 require get_template_directory() . '/page-builder/page-builder.php';
@@ -22,7 +23,7 @@ function ajaxurl_scripts () {
                            'url' => admin_url('admin-ajax.php')
                        ));
 
-	$v = '0.010';
+	$v = '0.013';
 
     wp_enqueue_script( "jquery" );
 
@@ -37,6 +38,9 @@ function ajaxurl_scripts () {
 
 	wp_register_script( 'slick-mobile-page', get_template_directory_uri() . '/js/slick-mobile-page.js', array(), $v );
 	wp_enqueue_script( 'slick-mobile-page' );
+
+    wp_register_script( 'ajax-pagination', get_template_directory_uri() . '/js/ajax-pagination.js', array(), $v );
+    wp_enqueue_script( 'ajax-pagination' );
 
     wp_register_script( 'main', get_template_directory_uri() . '/js/main.js', array(), $v );
     wp_enqueue_script( 'main' );

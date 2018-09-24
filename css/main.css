@@ -313,6 +313,9 @@ a:hover {
 /** Header END **/
 
 /** Top MENU BEGIN **/
+.menu li {
+    cursor: default;
+}
 .top-menu__menu ul {
     display: block;
     margin: 0;
@@ -1074,14 +1077,14 @@ a:hover {
     margin-top: 0;
 }
 .flat-menu > ul > li > a {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
-    line-height: 26px;
+    line-height: 20px;
     margin-bottom: 2px;
 }
 .flat-menu > ul > li ul a {
-    font-size: 16px;
-    line-height: 23px;
+    font-size: 14px;
+    line-height: 18px;
     margin-top: 10px;
 }
 /** Footer END **/

@@ -17,9 +17,9 @@
             <div class="footer-top__right">
                 <div class="footer-top__text-block">
                     <div class="footer-top__title"><?php
-						echo __t( 'Контакты офиса<br>в&nbsp;вашеме регионе', 'Office contacts<br>in&nbsp;your region' );
+						echo __t( 'Контакты офиса<br>в&nbsp;вашеме регионе', 'Office Locator' );
 						?></div>
-                    <div class="footer-top__desc"><?php echo __t( 'Перейдите в раздел ', 'Go to the section ' ); ?><a href="<?php echo get_the_permalink(27); ?>"><?php echo __t( 'Контакты', 'Contacts' ); ?></a></div>
+                    <div class="footer-top__desc"><?php echo __t( 'Перейдите в раздел ', 'Go the ' ); ?><a href="<?php echo get_the_permalink(27); ?>"><?php echo __t( 'Контакты', 'Contacts' ); ?></a></div>
                 </div>
             </div>
         </div>

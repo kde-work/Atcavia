@@ -4,7 +4,7 @@ function atc_breadcrumbs( $post_id, $s = ' / ' ) {
 	?>
 	<div class="breadcrumbs">
 		<?php
-		echo atc_breadcrumbs_template( __t( 'Главная', 'Main Page' ), 'main', '/' );
+		echo atc_breadcrumbs_template( __t( 'Главная', 'Home Page' ), 'main', '/' );
 		echo "<div class=\"breadcrumbs__separator\">$s</div>";
 		echo atc_breadcrumbs_template( tob_get_title( $post_id, get_the_title( $post_id ) ), $post_id, get_the_permalink( $post_id ), true );
 		?>

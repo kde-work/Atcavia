@@ -72,13 +72,13 @@
         max-width: 70%;
     }
     .top-menu__menu > ul {
-        margin: 20px 0 40px 0;
+        margin: 10px 0 30px 0;
     }
     .top-menu__menu > ul > li {
         display: block;
     }
     .top-menu__menu > ul > li > a {
-        padding: 14px 14px 12px;
+        padding: 9px 14px 7px;
     }
     .top-menu__menu .sub-menu {
         background-color: transparent;
@@ -92,6 +92,7 @@
     }
     .top-menu__menu .sub-menu a {
         color: #183ca1;
+        padding: 5px 14px;
     }
     .top-menu__hamburger {
         left: 40px;

@@ -31,7 +31,13 @@ global $Mammen;
 									<div>
 										<div class="slide-slick__title-line slide-slick__title-line--1 animate animate--top"><div><?php echo nbsp( $slide->get_field( ___( 'Title line 1' ) ) ); ?></div></div>
 										<div class="slide-slick__title-line slide-slick__title-line--2 animate animate--top"><div><?php echo nbsp( $slide->get_field( ___( 'Title line 2' ) ) ); ?></div></div>
-										<div class="slide-slick__title-line slide-slick__title-line--3 animate animate--bottom animate--delay"><div><?php echo nbsp( $slide->get_field( ___( 'Title line 3' ) ) ); ?></div></div>
+                                        <?php
+                                        if ( $slide->get_field( ___( 'Title line 3' ) ) ) :
+                                            ?>
+										    <div class="slide-slick__title-line slide-slick__title-line--3 animate animate--bottom animate--delay"><div><?php echo nbsp( $slide->get_field( ___( 'Title line 3' ) ) ); ?></div></div>
+                                            <?php
+                                        endif;
+                                        ?>
 									</div>
 								</div>
 							</div>
@@ -41,7 +47,13 @@ global $Mammen;
 									<div class="slide-slick__desc"><?php echo $slide->get_field( ___( 'Description' ) ); ?></div>
 								</div>
 								<div class="slide-slick__btn animate animate--opacity">
-									<a href="<?php echo $slide->get_field( 'Button URL' ); ?>" class="btn btn--light-blue"><?php echo $slide->get_field( ___( 'Button' ) ); ?></a>
+									<a href="<?php
+                                    if ( $slide->get_field( 'Button URL' ) ) {
+	                                    echo $slide->get_field( 'Button URL' );
+                                    } else {
+	                                    echo get_the_permalink( $slide->get_field( 'Post ID' ) );
+                                    }
+                                    ?>" class="btn btn--light-blue"><?php echo $slide->get_field( ___( 'Button' ) ); ?></a>
 								</div>
 							</div>
 						</div>

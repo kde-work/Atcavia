@@ -11,6 +11,10 @@
             theme = 0,
             $body = $('body');
 
+        if ($page_mobile_pagination__items.length) {
+            $body.addClass('mmp-slider');
+        }
+
         $elems.each(function (index) {
             var $this = $(this),
                 this_theme = $this.data('theme'),
@@ -44,9 +48,21 @@
                     "draggable": false,
                     "speed": 800,
                     "swipe": false,
+                    "respondTo": 'slider',
                     "adaptiveHeight": true
                 });
-                $page_content.on('afterChange', function(){atc_set_height_sliders_fix(500)});
+                $page_content.on('afterChange', function(){
+                    atc_set_height_sliders_fix(500);
+
+                    setTimeout(function () {
+                        var $header = $('.layout.header');
+                        $header.css({
+                            'z-index' : $header.css('z-index')*1 + 1
+                        });
+                    }, 1500);
+                });
+
+                atc_set_height_sliders_cont($('.slide-slick__cont'), 30); // setup height for content slides
             }
         }
     }
@@ -67,7 +83,8 @@
                 this_id = $this.data('id'),
                 $page_content = $('.home .page-content'),
                 $btn_active = $('.page-mobile-pagination__item--active'),
-                $body = $('body');
+                $body = $('body'),
+                $slider_first = $('.layout.slider > .slider-slick');
 
             $body.removeClass('theme--dark').removeClass('theme--light');
             $body.addClass('theme--'+$this.data('theme'));
@@ -78,6 +95,16 @@
 
             var $slick_list = $('.page-content.slick-slider > .slick-list');
             $slick_list.data('height', 0);
+
+            // fix for first tab
+            atc_set_height_rich_news(100);
+
+            if (this_id !== 0) {
+                $slider_first.slick('slickPause');
+            } else {
+                $slider_first.slick('slickPlay');
+                $slider_first.slick('slickNext');
+            }
         })
     });
 

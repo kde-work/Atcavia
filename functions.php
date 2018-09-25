@@ -5,6 +5,7 @@ require 'inc/services.php';
 require 'inc/breadcrumbs.php';
 require 'inc/tinymce-extend.php';
 require 'template-parts/shortcodes/include-shortcode-files.php';
+require 'template-parts/dev-kate.php';
 require 'inc/form.php';
 require 'inc/ajax-pagination.php';
 
@@ -13,6 +14,10 @@ require get_template_directory() . '/page-builder/page-builder.php';
 
 // session init
 atc_is_en();
+
+if ( !empty( $_GET['l'] ) AND $_GET['l'] == 'en' ) {
+	atc_setup_lang( 'en' );
+}
 
 add_image_size( 'large-2000', 2000, 800 );
 
@@ -23,7 +28,7 @@ function ajaxurl_scripts () {
                            'url' => admin_url('admin-ajax.php')
                        ));
 
-	$v = '0.013';
+	$v = '0.0183';
 
     wp_enqueue_script( "jquery" );
 
@@ -60,6 +65,9 @@ function ajaxurl_scripts () {
 
     wp_register_style( 'main',  get_template_directory_uri() . '/css/main.css', array(), $v );
     wp_enqueue_style( 'main' );
+
+//    wp_register_style( 'mobile-main-page-slider',  get_template_directory_uri() . '/css/mobile-main-page-slider.css', array(), $v );
+//    wp_enqueue_style( 'mobile-main-page-slider' );
 
     wp_register_style( 'media-t',  get_template_directory_uri() . '/css/media.css', array(), $v );
     wp_enqueue_style( 'media-t' );

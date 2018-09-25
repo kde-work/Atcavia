@@ -10,7 +10,8 @@
         atc_set_height_sliders_fix(2000);
     });
     function atc_set_height_sliders_fix(delay) {
-        var $slick_list = $('.theme--light .page-content.slick-slider > .slick-list');
+        var $slick_list = $('.theme--light .page-content.slick-slider > .slick-list'),
+            $slick_slide = $('.layout.slider .slick-slide');
 
         if (is_mobile() && $slick_list.data('height') !== 1) {
             setTimeout(function () {
@@ -18,13 +19,47 @@
                     height_list = $slick_list.height();
 
                 if ($slide_slick.length) {
-                    $slick_list.height(height_list-(height_list - $slide_slick.height()));
+                    var f = height_list-(height_list - $slide_slick.height()),
+                        wiH = window.innerHeight;
+
+                    if (f < wiH) {
+                        // $slick_list.css({
+                        //     'height' : '100vh'
+                        // });
+                        // $slick_slide.css({
+                        //     'height' : '100vh'
+                        // });
+                        $slick_list.height(wiH);
+                        $slick_slide.height(wiH);
+                    } else {
+                        $slick_list.height(f);
+                    }
                     $slick_list.data('height', 1);
                 }
             }, delay);
         }
     }
     window.atc_set_height_sliders_fix = atc_set_height_sliders_fix;
+
+    function atc_set_height_sliders_cont($elem, delay) {
+        if (is_mobile() && $elem.length) {
+            var max_height = $elem.first().outerHeight()*1;
+
+            setTimeout(function () {
+                $elem.each(function () {
+                    var $this = $(this),
+                        this_height = $this.outerHeight();
+
+                    // console.log(max_height, this_height);
+                    if (max_height < this_height) {
+                        max_height = this_height;
+                    }
+                });
+                $elem.outerHeight(max_height);
+            }, delay);
+        }
+    }
+    window.atc_set_height_sliders_cont = atc_set_height_sliders_cont;
 
     // Fix Mobile Height of Rich News
     $(function () {

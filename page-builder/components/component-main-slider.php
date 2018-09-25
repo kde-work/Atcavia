@@ -32,7 +32,14 @@
  *    Button OPTION 'help': Узнать больше
  *    Button en: Text
  *    Button en OPTION 'help': Learn More
- *    Button URL: Text
+ *    Type of link: OOTO BEGIN
+ *      Direct link: OOTO TAB
+ *      Direct link OPTION 'group': Type of link
+ *         Button URL: Text
+ *      Link by post ID: OOTO TAB
+ *      Link by post ID OPTION 'group': Type of link
+ *         Post ID: Text
+ *    Type of link: OOTO END
  *    Image: Media Upload
  *    Black Overlay in percent: Text
  *    Black Overlay in percent OPTION 'help': Default value 20

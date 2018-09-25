@@ -309,7 +309,7 @@
                 "nextArrow": false,
                 "slidesToShow": 1,
                 "slidesToScroll": 1,
-                "autoplay": 1,
+                "autoplay": 1,//1
                 "speed": 1200,
                 "pauseOnHover": 0,
                 "autoplaySpeed": 6500,
@@ -344,7 +344,7 @@
             $slick__single_news.slick({
                 "prevArrow": false,
                 "nextArrow": false,
-                "autoplay": 1,
+                "autoplay": 1,//1
                 "speed": 800,
                 "autoplaySpeed": 3800,
                 "pauseOnHover": 1

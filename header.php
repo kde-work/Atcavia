@@ -59,7 +59,7 @@ $classes = array( __t( 'ru', 'en' ) );
             <div class="top-search__ico"></div>
         </div>
         <div class="top-menu__btn scroll-btn">
-            <div class="btn btn--light-blue btn--medium btn--linked" data-linked="1" data-top="67" onclick="popup_c({'cat':'connect-with-us', 'title':'<?php echo nbsp( __t( 'Связаться с нами', 'Connect with Us' )); ?>', 'service': 1, 'description': '<?php echo nbsp( __t( 'Связаться с нами (Шапка сайта)', 'Connect with Us (Header)' )); ?>'}, this);"><?php
+            <div class="btn btn--light-blue btn--medium btn--linked" data-linked="1" data-top="67" onclick="popup_c({'cat':'connect-with-us', 'title':'<?php echo nbsp( __t( 'Связаться с нами', 'Get in touch' )); ?>', 'service': 1, 'description': '<?php echo nbsp( __t( 'Связаться с нами (Шапка сайта)', 'Get in touch (Header)' )); ?>'}, this);"><?php
 	            echo __t( 'Связаться&nbsp;с&nbsp;нами', 'Get&nbsp;in&nbsp;touch' );
 	            ?></div>
         </div>

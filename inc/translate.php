@@ -51,3 +51,7 @@ function atc_change_language() {
 	$_SESSION['lang'] = $lang;
 	die;
 }
+function atc_setup_lang( $lang ) {
+	session_start();
+	$_SESSION['lang'] = $lang;
+}
